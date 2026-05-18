@@ -1,0 +1,24 @@
+{
+  "current_episode": 0,
+  "total_episodes": 100,
+  "progress": 0,
+  "is_training": true,
+  "start_time": "2026-05-14T15:12:45.590836",
+  "elapsed_seconds": 0,
+  "avg_reward": 0,
+  "recent_rewards": [],
+  "evaluation_results": [],
+  "debug_stats": {
+    "total_episodes": 0,
+    "actual_wins": 0,
+    "draws": 0,
+    "tsumo_opportunities": 0,
+    "ron_opportunities": 0,
+    "tsumo_taken": 0,
+    "ron_taken": 0,
+    "tsumo_missed_random": 0,
+    "tsumo_missed_greedy": 0,
+    "ron_missed_random": 0,
+    "ron_missed_greedy": 0
+  }
+}

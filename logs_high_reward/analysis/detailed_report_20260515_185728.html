@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详细决策过程分析报告</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .summary {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .summary-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .summary-item .label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .summary-item .value {
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .chart-title {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        svg {
+            width: 100%;
+            height: 300px;
+        }
+        .axis path, .axis line {
+            stroke: #ccc;
+        }
+        .axis text {
+            font-size: 12px;
+            fill: #666;
+        }
+        .legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .analysis-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .analysis-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .analysis-item .title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .analysis-item .content {
+            color: #666;
+            font-size: 14px;
+        }
+        .timestamp {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin-bottom: 15px;
+        }
+        .success {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>详细决策过程分析报告</h1>
+    
+    <div class="summary">
+        <h2 style="margin-top: 0;">训练摘要</h2>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="label">当前回合</div>
+                <div class="value">140/5000</div>
+            </div>
+            <div class="summary-item">
+                <div class="label">训练进度</div>
+                <div class="value">2.8%</div>
+            </div>
+            <div class="summary-item">
+                <div class="label">平均奖励</div>
+                <div class="value">0.5529</div>
+            </div>
+            <div class="summary-item">
+                <div class="label">已用时间</div>
+                <div class="value">30分钟</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="success">
+        <strong>重要发现:</strong>
+        <br>最近20回合中有2个高奖励回合(>3.0)
+        <br>这表明模型可能开始学习到一些有效的策略！
+        <br>高奖励回合: 回合10(4.05), 回合18(3.92)
+    </div>
+
+    <div class="chart-container">
+        <div class="chart-title">最近奖励趋势（最近20回合）</div>
+        <svg id="recentChart" viewBox="0 0 800 300">
+            <g class="axis">
+                <line x1="50" y1="250" x2="780" y2="250" stroke="#ccc"/>
+                <line x1="50" y1="30" x2="50" y2="250" stroke="#ccc"/>
+            </g>
+
+            <path d="M 50.0,250.0 L 88.42105263157895,240.89726918075422 L 126.84210526315789,225.94278283485045 L 165.26315789473682,243.23797139141743 L 203.68421052631578,243.49804941482444 L 242.10526315789474,220.35110533159948 L 280.52631578947364,230.49414824447334 L 318.9473684210526,240.24707412223668 L 357.36842105263156,217.1001300390117 L 395.7894736842105,50.0 L 434.2105263157895,229.58387516254876 L 472.63157894736844,216.84005201560467 L 511.05263157894734,222.69180754226267 L 549.4736842105262,236.0858257477243 L 587.8947368421052,228.54356306892066 L 626.3157894736842,238.296488946684 L 664.7368421052631,243.49804941482444 L 703.1578947368421,56.631989596879066 L 741.578947368421,218.92067620286088 L 780.0,243.49804941482444" fill="none" stroke="#4CAF50" stroke-width="2"/>
+<circle cx="50.0" cy="250.0" r="3" fill="#4CAF50"/><circle cx="88.42105263157895" cy="240.89726918075422" r="3" fill="#4CAF50"/><circle cx="126.84210526315789" cy="225.94278283485045" r="3" fill="#4CAF50"/><circle cx="165.26315789473682" cy="243.23797139141743" r="3" fill="#4CAF50"/><circle cx="203.68421052631578" cy="243.49804941482444" r="3" fill="#4CAF50"/><circle cx="242.10526315789474" cy="220.35110533159948" r="3" fill="#4CAF50"/><circle cx="280.52631578947364" cy="230.49414824447334" r="3" fill="#4CAF50"/><circle cx="318.9473684210526" cy="240.24707412223668" r="3" fill="#4CAF50"/><circle cx="357.36842105263156" cy="217.1001300390117" r="3" fill="#4CAF50"/><circle cx="395.7894736842105" cy="50.0" r="5" fill="#FF5722"/><circle cx="434.2105263157895" cy="229.58387516254876" r="3" fill="#4CAF50"/><circle cx="472.63157894736844" cy="216.84005201560467" r="3" fill="#4CAF50"/><circle cx="511.05263157894734" cy="222.69180754226267" r="3" fill="#4CAF50"/><circle cx="549.4736842105262" cy="236.0858257477243" r="3" fill="#4CAF50"/><circle cx="587.8947368421052" cy="228.54356306892066" r="3" fill="#4CAF50"/><circle cx="626.3157894736842" cy="238.296488946684" r="3" fill="#4CAF50"/><circle cx="664.7368421052631" cy="243.49804941482444" r="3" fill="#4CAF50"/><circle cx="703.1578947368421" cy="56.631989596879066" r="5" fill="#FF5722"/><circle cx="741.578947368421" cy="218.92067620286088" r="3" fill="#4CAF50"/><circle cx="780.0" cy="243.49804941482444" r="3" fill="#4CAF50"/>
+            <text x="30" y="35" fill="#666" font-size="12">4.05</text>
+            <text x="30" y="255" fill="#666" font-size="12">0.20</text>
+        </svg>
+        <div class="legend">
+            <div class="legend-item"><span class="legend-color" style="background: #4CAF50;"></span>正常奖励</div>
+            <div class="legend-item"><span class="legend-color" style="background: #FF5722;"></span>高奖励(>3.0)</div>
+        </div>
+    </div>
+
+    <div class="analysis-section">
+        <h2 style="margin-top: 0;">决策过程分析</h2>
+        
+        <div class="analysis-item">
+            <div class="title">1. 优先和牌逻辑</div>
+            <div class="content">已启用，当有和牌机会时90%概率优先选择和牌动作。这确保模型能体验到和牌的高奖励(+15.0)。</div>
+        </div>
+        
+        <div class="analysis-item">
+            <div class="title">2. 日志功能</div>
+            <div class="content">已启用，当有和牌机会时会自动打印详细日志，包括手牌、Q值对比、决策过程等信息。</div>
+        </div>
+        
+        <div class="analysis-item">
+            <div class="title">3. 奖励机制</div>
+            <div class="content">和牌奖励+15.0(原+1.0，提升15倍)，输家惩罚-5.0(原-0.33，提升15倍)。大幅增加和牌的吸引力。</div>
+        </div>
+    </div>
+    
+    <div class="analysis-section">
+        <h2 style="margin-top: 0;">和牌失败原因分析</h2>
+        
+        <div class="analysis-item">
+            <div class="title">1. 训练时间不足</div>
+            <div class="content">当前仅完成 {status['progress']:.1f}% 的训练，DQN需要大量样本才能学习到和牌策略。建议继续训练到5000回合。</div>
+        </div>
+        
+        <div class="analysis-item">
+            <div class="title">2. 和牌是稀疏奖励</div>
+            <div class="content">麻将和牌本身就是低概率事件，即使有优先和牌逻辑，也需要和牌机会出现才能学习。</div>
+        </div>
+        
+        <div class="analysis-item">
+            <div class="title">3. epsilon探索阶段</div>
+            <div class="content">训练初期epsilon较高，随机动作可能错过和牌机会。随着训练进行，epsilon会逐渐降低。</div>
+        </div>
+        
+        <div class="analysis-item">
+            <div class="title">4. 随机对手策略</div>
+            <div class="content">对手是随机策略，不会主动送和牌，荣和机会较少。主要依赖自摸。</div>
+        </div>
+    </div>
+    
+    <div class="analysis-section">
+        <h2 style="margin-top: 0;">建议</h2>
+        
+        <div class="analysis-item">
+            <div class="title">1. 继续训练</div>
+            <div class="content">继续训练到5000回合，观察模型是否能学习到和牌策略。</div>
+        </div>
+        
+        <div class="analysis-item">
+            <div class="title">2. 监控奖励峰值</div>
+            <div class="content">最近出现了高奖励回合(>3.0)，这可能是模型开始学习的信号。继续观察是否持续出现。</div>
+        </div>
+        
+        <div class="analysis-item">
+            <div class="title">3. 检查日志</div>
+            <div class="content">训练日志中会记录[和牌机会]和[优先和牌]等信息，关注这些日志可以了解和牌机会是否出现。</div>
+        </div>
+    </div>
+
+    <div class="timestamp">
+        生成时间: 2026-05-15 18:57:28
+    </div>
+</body>
+</html>
