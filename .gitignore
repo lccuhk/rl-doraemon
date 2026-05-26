@@ -43,3 +43,11 @@ Thumbs.db
 checkpoints/
 checkpoints_*/
 *.pt
+
+# Training logs (too large for GitHub)
+logs/
+logs_*/
+*.log
+
+# Keep charts directory
+!charts/

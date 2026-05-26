@@ -375,13 +375,13 @@ class MahjongEnv:
             legal_actions = self._get_legal_actions(responder_id)
             
             if ActionType.RON.value in legal_actions:
-                self._handle_ron({})
+                self.phase = GamePhase.RESPONDING
                 return
             elif ActionType.PON.value in legal_actions:
-                self._handle_pon()
+                self.phase = GamePhase.RESPONDING
                 return
             elif ActionType.CHI.value in legal_actions and responder_id == (self.last_discarder + 1) % self.num_players:
-                self._handle_chi()
+                self.phase = GamePhase.RESPONDING
                 return
         
         self._next_turn()

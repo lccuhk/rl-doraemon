@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from src.environment.mahjong_env import MahjongEnv
 from src.agents.random_agent import RandomAgent
@@ -9,7 +9,7 @@ from src.training.trainer import Trainer
 
 def main():
     print("="*60)
-    print("麻将AI - DQN训练示例")
+    print("快速训练并保存模型")
     print("="*60)
     
     env = MahjongEnv(seed=42)
@@ -36,31 +36,35 @@ def main():
     
     trainer = Trainer(env, agents, log_dir="./logs", checkpoint_dir="./checkpoints")
     
-    num_episodes = 1000
+    num_episodes = 20
     print(f"\n开始训练 {num_episodes} 回合...")
     print(f"设备: {dqn_agent.device}")
     
     history = trainer.train(
         num_episodes=num_episodes,
-        save_freq=100,
-        eval_freq=100,
-        num_eval_episodes=10
+        save_freq=10,
+        eval_freq=10,
+        num_eval_episodes=5
     )
     
     print("\n训练完成！")
     print(f"总步数: {dqn_agent.steps_done}")
     print(f"最终epsilon: {dqn_agent.get_epsilon():.4f}")
     
-    print("\n评估最终模型...")
-    dqn_agent.set_training(False)
-    results = trainer.tournament(num_games=100)
+    os.makedirs("./checkpoints", exist_ok=True)
+    model_path = "./checkpoints/trained_model.pt"
+    dqn_agent.save(model_path)
+    print(f"\n模型已保存到: {model_path}")
     
-    print("\n" + "="*60)
-    print("最终评估结果")
-    print("="*60)
-    print(f"DQN Agent 胜率: {results['win_rates'][0]*100:.1f}%")
-    print(f"DQN Agent 平均分数: {results['avg_scores'][0]:.0f}")
-    print(f"对手平均胜率: {sum(results['win_rates'][1:])/3*100:.1f}%")
+    print("\n验证模型加载...")
+    loaded_agent = DQNAgent(
+        name="DQN_Mahjong_Loaded",
+        input_shape=(6, 34, 4),
+        num_actions=41,
+        hidden_size=256
+    )
+    loaded_agent.load(model_path)
+    print(f"模型加载成功！步数: {loaded_agent.steps_done}, epsilon: {loaded_agent.get_epsilon():.4f}")
 
 if __name__ == "__main__":
     main()

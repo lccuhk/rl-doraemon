@@ -39,7 +39,7 @@ class ReplayBuffer:
 class DQNAgentDebug(BaseAgent):
     def __init__(self, name: str = "DQNAgentDebug", 
                  input_shape: Tuple[int, int, int] = (6, 34, 4),
-                 num_actions: int = 38,
+                 num_actions: int = 41,
                  hidden_size: int = 256,
                  learning_rate: float = 0.001,
                  gamma: float = 0.99,

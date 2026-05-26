@@ -243,7 +243,7 @@ def main():
     dqn_agent = DQNAgentDebug(
         name="DQN_Mahjong_Debug",
         input_shape=(6, 34, 4),
-        num_actions=38,
+        num_actions=41,
         hidden_size=256,
         learning_rate=0.001,
         gamma=0.99,
