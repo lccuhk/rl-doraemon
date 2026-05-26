@@ -104,37 +104,96 @@ kill -SIGTERM <PID>
 
 ## 模型文件说明
 
-由于模型文件较大（每个约 100-200MB），**不包含在 GitHub 仓库中。你需要：
+由于模型文件较大（每个约 143MB），**不包含在 GitHub 仓库中**。你可以通过以下方式获取模型：
 
-### 选项 1：自己训练模型
+### 选项 1：下载预训练模型（推荐）
+
+我们提供了预训练模型的云存储下载链接：
+
+| 模型 | 训练回合 | 文件大小 | 下载链接 |
+|------|----------|----------|----------|
+| DQN 2000 回合 | 2000 回合 | 143 MB | [Google Drive](https://drive.google.com/file/d/你的文件ID/view) \| [百度网盘](https://pan.baidu.com/s/你的分享链接) |
+| DQN 5000 回合 | 5000 回合 | 143 MB | [Google Drive](https://drive.google.com/file/d/你的文件ID/view) \| [百度网盘](https://pan.baidu.com/s/你的分享链接) |
+
+> **注意**：请将上述链接替换为你实际的云存储分享链接。
+
+#### 下载步骤：
+
+1. 点击上方的下载链接
+2. 下载模型文件到本地
+3. 将文件放置到对应的目录：
 
 ```bash
-# 训练 2000 回合
+# 2000 回合模型
+mkdir -p checkpoints_2000
+mv final_model_2000_*.pt checkpoints_2000/
+
+# 5000 回合模型
+mkdir -p checkpoints_5000
+mv final_model_5000_*.pt checkpoints_5000/
+```
+
+### 选项 2：自己训练模型
+
+如果你想从头开始训练模型：
+
+```bash
+# 训练 2000 回合（约 16 小时）
 python train_2000_episodes.py
 
-# 或训练 5000 回合
+# 或训练 5000 回合（约 40 小时）
 python train_5000_episodes.py
 ```
 
-### 选项 2：下载预训练模型
+### 选项 3：从检查点恢复训练
 
-预训练模型将在后续提供下载链接（如果有）
+如果你有之前的检查点文件：
+
+```bash
+# 从最新检查点恢复
+python train_5000_episodes.py --resume
+
+# 或指定检查点路径
+python train_5000_episodes.py --checkpoint ./checkpoints_5000/checkpoint_2999_*.pt
+```
 
 ### 模型文件位置
 
-训练完成后，模型文件保存在：
+训练完成或下载后，模型文件结构如下：
 
 ```
 checkpoints_2000/
-├── final_model_*.pt           # 2000回合最终模型
+├── final_model_*.pt           # 2000回合最终模型（143MB）
 ├── checkpoint_*.pt              # 中间检查点
 └── snapshots/               # 回合快照
 
 checkpoints_5000/
-├── final_model_*.pt           # 5000回合最终模型
+├── final_model_*.pt           # 5000回合最终模型（143MB）
 ├── checkpoint_*.pt              # 中间检查点
 └── snapshots/               # 回合快照
 ```
+
+### 上传模型到云存储的步骤
+
+如果你想分享自己训练的模型：
+
+#### Google Drive：
+
+1. 上传模型文件到 Google Drive
+2. 右键点击文件 → 共享 → 复制链接
+3. 确保链接权限设置为"任何知道链接的人都可以查看"
+4. 将链接添加到上方表格
+
+#### 百度网盘：
+
+1. 上传模型文件到百度网盘
+2. 右键点击文件 → 分享 → 创建公开链接
+3. 复制分享链接和提取码
+4. 将链接添加到上方表格
+
+#### Dropbox / OneDrive：
+
+类似步骤，创建公开分享链接即可。
 
 ## 加载和使用模型
 
