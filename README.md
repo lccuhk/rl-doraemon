@@ -1,5 +1,19 @@
 # RL-Doraemon: 麻将AI强化学习项目
 
+<p align="center">
+  <img src="https://img.shields.io/github/stars/lccuhk/rl-doraemon?style=for-the-badge&color=00D9FF" />
+  <img src="https://img.shields.io/github/forks/lccuhk/rl-doraemon?style=for-the-badge&color=00FF88" />
+  <img src="https://img.shields.io/github/issues/lccuhk/rl-doraemon?style=for-the-badge&color=FF6B6B" />
+  <img src="https://img.shields.io/github/license/lccuhk/rl-doraemon?style=for-the-badge&color=FFD93D" />
+  <img src="https://img.shields.io/github/last-commit/lccuhk/rl-doraemon?style=for-the-badge&color=9B59B6" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/RL-DQN-FF6B6B?style=for-the-badge" />
+</p>
+
 一个基于深度强化学习（DQN）的麻将AI项目，使用 PyTorch 实现。
 
 ## 项目简介
@@ -102,6 +116,114 @@ kill -SIGTERM <PID>
 # 或按 Ctrl+C
 ```
 
+<!-- TRAINING_STATUS_START -->
+## 训练状态
+
+> 最后更新: 2026-05-28 12:24:08
+
+### ⏸️ 训练已暂停/完成
+
+#### DQN 2000 回合
+
+**训练进度**: [██████░░░░░░░░░░░░░░] 34.9%
+- 当前回合: 699 / 2000
+- 最新检查点: checkpoint_699_20260526_225622_agent0.pt
+- 检查点大小: 142.91 MB
+- 最后更新: 2026-05-26 22:56:23
+
+**模型状态**: ✅ 已完成
+- 模型文件: `final_model_20260522_152402_agent0.pt`
+- 文件大小: 142.91 MB
+- 创建时间: 2026-05-22 15:24:02
+
+---
+
+#### DQN 5000 回合
+
+**训练进度**: [███████████████████░] 100.0%
+- 当前回合: 4999 / 5000
+- 最新检查点: checkpoint_4999_20260525_195410_agent0.pt
+- 检查点大小: 142.91 MB
+- 最后更新: 2026-05-25 19:54:10
+
+**模型状态**: ✅ 已完成
+- 模型文件: `final_model_20260525_195414_agent0.pt`
+- 文件大小: 142.91 MB
+- 创建时间: 2026-05-25 19:54:15
+
+---
+
+### 📁 模型文件位置
+
+| 模型 | 目录 | 状态 |
+|------|------|------|
+| DQN 2000 回合 | `checkpoints_2000` | ✅ 已完成 |
+| DQN 5000 回合 | `checkpoints_5000` | ✅ 已完成 |
+
+---
+
+### 📜 训练历史说明
+
+#### DQN 2000 回合训练历史
+
+| 日期 | 事件 | 结果 | 日志文件 |
+|------|------|------|----------|
+| **2026-05-21** | 第一次训练 | ⏸️ 第 226 回合收到 SIGTERM 信号，优雅退出 | `training_20260521_211052.log` |
+| **2026-05-22** | 第二次训练 | ✅ **成功完成 2000 回合训练！** 生成最终模型 | `training_20260521_223417.log` |
+| **2026-05-26** | 第三次训练 | ⏸️ 第 699 回合中断 | `training_history_20260526_225622.json` |
+
+> **注意**：2000 回合的训练实际上已经在 2026-05-22 完成，模型文件 `final_model_20260522_152402_agent0.pt` 可以直接使用。5月26日是尝试新的训练，但中途中断了。
+
+#### DQN 5000 回合训练历史
+
+| 日期 | 事件 | 结果 | 日志文件 |
+|------|------|------|----------|
+| **2026-05-25** | 训练完成 | ✅ **成功完成 5000 回合训练！** | `training_5000_20260522_163936.log` |
+
+---
+
+### 📂 训练日志说明
+
+#### 日志目录结构
+
+```
+rl-doraemon/
+├── logs_2000/         # 2000 回合训练历史 JSON 文件
+├── logs_5000/         # 5000 回合训练历史 JSON 文件
+├── logs_debug/        # 调试日志
+├── logs_high_reward/  # 高奖励训练日志
+├── logs_realtime/     # 实时训练日志
+├── logs_v2/           # 第2版训练日志
+├── logs_v3/           # 第3版训练日志
+├── training_*.log     # 完整训练文本日志
+└── monitor_*.log      # 监控日志
+```
+
+#### 日志文件类型
+
+| 文件类型 | 格式 | 内容说明 |
+|---------|------|---------|
+| `training_history_*.json` | JSON | 详细训练历史记录，包括每步状态、动作、奖励 |
+| `training_*.log` | 文本 | 训练过程文本日志，包括损失、奖励统计 |
+| `convergence_log_*.json` | JSON | 收敛性检测日志 |
+
+#### 更新训练状态
+
+使用以下脚本自动更新 README 中的训练状态：
+
+```bash
+# 只显示状态，不更新 README
+python update_readme_status.py --print-only
+
+# 显示状态并更新 README
+python update_readme_status.py --update-readme
+
+# 持续监控模式（每分钟自动更新）
+python update_readme_status.py --watch --update-readme --interval 60
+```
+
+<!-- TRAINING_STATUS_END -->
+
 ## 模型文件说明
 
 由于模型文件较大（每个约 143MB），**不包含在 GitHub 仓库中**。你可以通过以下方式获取模型：
@@ -112,10 +234,10 @@ kill -SIGTERM <PID>
 
 | 模型 | 训练回合 | 文件大小 | 下载链接 |
 |------|----------|----------|----------|
-| DQN 2000 回合 | 2000 回合 | 143 MB | [Google Drive](https://drive.google.com/file/d/你的文件ID/view) \| [百度网盘](https://pan.baidu.com/s/你的分享链接) |
-| DQN 5000 回合 | 5000 回合 | 143 MB | [Google Drive](https://drive.google.com/file/d/你的文件ID/view) \| [百度网盘](https://pan.baidu.com/s/你的分享链接) |
+| DQN 2000 回合 | 2000 回合 | 143 MB | [Google Drive 文件夹](https://drive.google.com/drive/folders/1_Cw0NhlSoCk_7oFGhWa5oRwVyAluudru?usp=sharing) |
+| DQN 5000 回合 | 5000 回合 | 143 MB | [Google Drive 文件夹](https://drive.google.com/drive/folders/1KQi2fw8FxHvUgDcUjTep2TPz740jApy1?usp=sharing) |
 
-> **注意**：请将上述链接替换为你实际的云存储分享链接。
+> **注意**：模型文件将上传到上述 Google Drive 文件夹中。上传完成后，点击链接进入文件夹下载模型文件。
 
 #### 下载步骤：
 
