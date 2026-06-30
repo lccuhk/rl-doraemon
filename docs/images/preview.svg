@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1200" height="800" fill="url(#bgGradient)"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="1200" height="60" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="40" y="38" fill="#f59e0b" font-family="monospace" font-size="20" font-weight="bold">🀄 RL-Doraemon</text>
+  <text x="280" y="38" fill="#94a3b8" font-family="monospace" font-size="14">Mahjong AI with Deep Reinforcement Learning</text>
+  
+  <!-- Main Layout -->
+  <!-- Left Panel: Training Stats -->
+  <rect x="20" y="80" width="350" height="300" fill="#1e293b" rx="8" ry="8" stroke="#334155" stroke-width="1"/>
+  <text x="40" y="115" fill="#f59e0b" font-family="Arial, sans-serif" font-size="18" font-weight="bold">📊 训练状态</text>
+  
+  <text x="40" y="155" fill="#94a3b8" font-family="monospace" font-size="12">训练回合</text>
+  <rect x="40" y="165" width="300" height="20" fill="#0f172a" rx="4" ry="4"/>
+  <rect x="40" y="165" width="270" height="20" fill="url(#accentGradient)" rx="4" ry="4"/>
+  <text x="300" y="180" fill="#fff" font-family="monospace" font-size="10" text-anchor="end">5000 / 5000</text>
+  
+  <text x="40" y="220" fill="#94a3b8" font-family="monospace" font-size="12">探索率 ε</text>
+  <rect x="40" y="230" width="300" height="20" fill="#0f172a" rx="4" ry="4"/>
+  <rect x="40" y="230" width="3" height="20" fill="#ef4444" rx="4" ry="4"/>
+  <text x="300" y="245" fill="#fff" font-family="monospace" font-size="10" text-anchor="end">0.01 (1.0%)</text>
+  
+  <text x="40" y="285" fill="#94a3b8" font-family="monospace" font-size="12">平均奖励</text>
+  <text x="200" y="285" fill="#10b981" font-family="monospace" font-size="12" font-weight="bold">+1.6041</text>
+  
+  <text x="40" y="315" fill="#94a3b8" font-family="monospace" font-size="12">损失值</text>
+  <text x="200" y="315" fill="#3b82f6" font-family="monospace" font-size="12" font-weight="bold">0.0587</text>
+  
+  <text x="40" y="345" fill="#94a3b8" font-family="monospace" font-size="12">胜率</text>
+  <text x="200" y="345" fill="#f59e0b" font-family="monospace" font-size="12" font-weight="bold">2.0%</text>
+  
+  <!-- Center: Mahjong Table -->
+  <rect x="390" y="80" width="420" height="400" fill="#064e3b" rx="10" ry="10" stroke="#059669" stroke-width="3"/>
+  <text x="560" y="115" fill="#10b981" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">🀄 麻将对局</text>
+  
+  <!-- Player Hands -->
+  <text x="420" y="200" fill="#94a3b8" font-family="monospace" font-size="10">P1 (AI)</text>
+  <g transform="translate(420, 210)">
+    <rect width="30" height="50" fill="#fff" rx="3" ry="3" stroke="#333" stroke-width="1"/>
+    <text x="15" y="32" fill="#ef4444" font-size="20" text-anchor="middle">🀇</text>
+  </g>
+  <g transform="translate(455, 210)">
+    <rect width="30" height="50" fill="#fff" rx="3" ry="3" stroke="#333" stroke-width="1"/>
+    <text x="15" y="32" fill="#ef4444" font-size="20" text-anchor="middle">🀈</text>
+  </g>
+  <g transform="translate(490, 210)">
+    <rect width="30" height="50" fill="#fff" rx="3" ry="3" stroke="#333" stroke-width="1"/>
+    <text x="15" y="32" fill="#ef4444" font-size="20" text-anchor="middle">🀉</text>
+  </g>
+  <g transform="translate(525, 210)">
+    <rect width="30" height="50" fill="#fff" rx="3" ry="3" stroke="#333" stroke-width="1"/>
+    <text x="15" y="32" fill="#10b981" font-size="20" text-anchor="middle">🀙</text>
+  </g>
+  <g transform="translate(560, 210)">
+    <rect width="30" height="50" fill="#fff" rx="3" ry="3" stroke="#333" stroke-width="1"/>
+    <text x="15" y="32" fill="#10b981" font-size="20" text-anchor="middle">🀚</text>
+  </g>
+  <g transform="translate(595, 210)">
+    <rect width="30" height="50" fill="#fff" rx="3" ry="3" stroke="#333" stroke-width="1"/>
+    <text x="15" y="32" fill="#10b981" font-size="20" text-anchor="middle">🀛</text>
+  </g>
+  <g transform="translate(630, 210)">
+    <rect width="30" height="50" fill="#fff" rx="3" ry="3" stroke="#333" stroke-width="1"/>
+    <text x="15" y="32" fill="#3b82f6" font-size="20" text-anchor="middle">🀐</text>
+  </g>
+  <g transform="translate(665, 210)">
+    <rect width="30" height="50" fill="#fff" rx="3" ry="3" stroke="#333" stroke-width="1"/>
+    <text x="15" y="32" fill="#3b82f6" font-size="20" text-anchor="middle">🀑</text>
+  </g>
+  <g transform="translate(700, 210)">
+    <rect width="30" height="50" fill="#fff" rx="3" ry="3" stroke="#333" stroke-width="1"/>
+    <text x="15" y="32" fill="#3b82f6" font-size="20" text-anchor="middle">🀒</text>
+  </g>
+  <g transform="translate(735, 210)">
+    <rect width="30" height="50" fill="#fbbf24" rx="3" ry="3" stroke="#f59e0b" stroke-width="2" filter="url(#glow)"/>
+    <text x="15" y="32" fill="#fff" font-size="14" text-anchor="middle">?</text>
+  </g>
+  
+  <!-- Discard Area -->
+  <text x="420" y="320" fill="#94a3b8" font-family="monospace" font-size="10">牌河</text>
+  <g transform="translate(420, 330)">
+    <rect width="25" height="35" fill="#e2e8f0" rx="2" ry="2" stroke="#94a3b8" stroke-width="1"/>
+    <text x="12" y="24" fill="#ef4444" font-size="14" text-anchor="middle">🀊</text>
+  </g>
+  <g transform="translate(450, 330)">
+    <rect width="25" height="35" fill="#e2e8f0" rx="2" ry="2" stroke="#94a3b8" stroke-width="1"/>
+    <text x="12" y="24" fill="#10b981" font-size="14" text-anchor="middle">🀜</text>
+  </g>
+  <g transform="translate(480, 330)">
+    <rect width="25" height="35" fill="#e2e8f0" rx="2" ry="2" stroke="#94a3b8" stroke-width="1"/>
+    <text x="12" y="24" fill="#3b82f6" font-size="14" text-anchor="middle">🀓</text>
+  </g>
+  <g transform="translate(510, 330)">
+    <rect width="25" height="35" fill="#e2e8f0" rx="2" ry="2" stroke="#94a3b8" stroke-width="1"/>
+    <text x="12" y="24" fill="#7c3aed" font-size="14" text-anchor="middle">🀀</text>
+  </g>
+  
+  <!-- Action Buttons -->
+  <rect x="420" y="420" width="80" height="35" fill="#10b981" rx="5" ry="5"/>
+  <text x="460" y="442" fill="#fff" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">立直</text>
+  <rect x="510" y="420" width="80" height="35" fill="#3b82f6" rx="5" ry="5"/>
+  <text x="550" y="442" fill="#fff" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">自摸</text>
+  <rect x="600" y="420" width="80" height="35" fill="#ef4444" rx="5" ry="5"/>
+  <text x="640" y="442" fill="#fff" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">荣和</text>
+  <rect x="690" y="420" width="80" height="35" fill="#64748b" rx="5" ry="5"/>
+  <text x="730" y="442" fill="#fff" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">弃和</text>
+  
+  <!-- Right Panel: Learning Curve -->
+  <rect x="830" y="80" width="350" height="300" fill="#1e293b" rx="8" ry="8" stroke="#334155" stroke-width="1"/>
+  <text x="850" y="115" fill="#f59e0b" font-family="Arial, sans-serif" font-size="18" font-weight="bold">📈 学习曲线</text>
+  
+  <!-- Chart Axes -->
+  <line x1="860" y1="340" x2="1150" y2="340" stroke="#475569" stroke-width="1"/>
+  <line x1="860" y1="130" x2="860" y2="340" stroke="#475569" stroke-width="1"/>
+  
+  <!-- Reward Curve -->
+  <path d="M 860 320 Q 920 310 980 280 T 1100 240 T 1150 200" fill="none" stroke="#10b981" stroke-width="2"/>
+  <circle cx="860" cy="320" r="3" fill="#10b981"/>
+  <circle cx="980" cy="280" r="3" fill="#10b981"/>
+  <circle cx="1100" cy="240" r="3" fill="#10b981"/>
+  <circle cx="1150" cy="200" r="3" fill="#10b981"/>
+  
+  <!-- Loss Curve -->
+  <path d="M 860 150 Q 920 180 980 220 T 1100 250 T 1150 260" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/>
+  <circle cx="860" cy="150" r="3" fill="#ef4444"/>
+  <circle cx="980" cy="220" r="3" fill="#ef4444"/>
+  <circle cx="1150" cy="260" r="3" fill="#ef4444"/>
+  
+  <!-- Legend -->
+  <rect x="870" y="135" width="15" height="3" fill="#10b981"/>
+  <text x="895" y="140" fill="#94a3b8" font-family="monospace" font-size="10">奖励</text>
+  <rect x="970" y="135" width="15" height="3" fill="#ef4444"/>
+  <text x="995" y="140" fill="#94a3b8" font-family="monospace" font-size="10">损失</text>
+  
+  <!-- Bottom Panel: Model Info -->
+  <rect x="20" y="400" width="350" height="280" fill="#1e293b" rx="8" ry="8" stroke="#334155" stroke-width="1"/>
+  <text x="40" y="435" fill="#f59e0b" font-family="Arial, sans-serif" font-size="18" font-weight="bold">🧠 模型架构</text>
+  
+  <text x="40" y="470" fill="#94a3b8" font-family="monospace" font-size="12">DQN 网络结构</text>
+  <rect x="40" y="480" width="300" height="80" fill="#0f172a" rx="5" ry="5"/>
+  <text x="55" y="505" fill="#3b82f6" font-family="monospace" font-size="11">Input: (6, 34, 4) → 2D 卷积层</text>
+  <text x="55" y="525" fill="#8b5cf6" font-family="monospace" font-size="11">Hidden: 256 → ReLU → Dropout</text>
+  <text x="55" y="545" fill="#10b981" font-family="monospace" font-size="11">Output: 41 动作 (Q-values)</text>
+  
+  <text x="40" y="590" fill="#94a3b8" font-family="monospace" font-size="12">训练参数</text>
+  <text x="40" y="615" fill="#cbd5e1" font-family="monospace" font-size="11">• 学习率: 0.0001</text>
+  <text x="40" y="635" fill="#cbd5e1" font-family="monospace" font-size="11">• γ (折扣因子): 0.99</text>
+  <text x="40" y="655" fill="#cbd5e1" font-family="monospace" font-size="11">• 经验回放: 100,000</text>
+  <text x="200" y="615" fill="#cbd5e1" font-family="monospace" font-size="11">• 目标更新: 每 100 步</text>
+  <text x="200" y="635" fill="#cbd5e1" font-family="monospace" font-size="11">• Batch Size: 64</text>
+  <text x="200" y="655" fill="#cbd5e1" font-family="monospace" font-size="11">• 优化器: Adam</text>
+  
+  <!-- Bottom Right: Learned Yaku -->
+  <rect x="830" y="400" width="350" height="280" fill="#1e293b" rx="8" ry="8" stroke="#334155" stroke-width="1"/>
+  <text x="850" y="435" fill="#f59e0b" font-family="Arial, sans-serif" font-size="18" font-weight="bold">🏆 已学会役种</text>
+  
+  <g transform="translate(850, 460)">
+    <rect width="100" height="30" fill="#064e3b" rx="4" ry="4"/>
+    <text x="50" y="20" fill="#10b981" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">✅ 立直</text>
+  </g>
+  <g transform="translate(960, 460)">
+    <rect width="100" height="30" fill="#064e3b" rx="4" ry="4"/>
+    <text x="50" y="20" fill="#10b981" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">✅ 自摸</text>
+  </g>
+  <g transform="translate(1070, 460)">
+    <rect width="100" height="30" fill="#064e3b" rx="4" ry="4"/>
+    <text x="50" y="20" fill="#10b981" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">✅ 荣和</text>
+  </g>
+  
+  <g transform="translate(850, 500)">
+    <rect width="100" height="30" fill="#064e3b" rx="4" ry="4"/>
+    <text x="50" y="20" fill="#10b981" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">✅ 清一色</text>
+  </g>
+  <g transform="translate(960, 500)">
+    <rect width="100" height="30" fill="#064e3b" rx="4" ry="4"/>
+    <text x="50" y="20" fill="#10b981" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">✅ 七对子</text>
+  </g>
+  <g transform="translate(1070, 500)">
+    <rect width="100" height="30" fill="#064e3b" rx="4" ry="4"/>
+    <text x="50" y="20" fill="#10b981" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">✅ 一杯口</text>
+  </g>
+  
+  <g transform="translate(850, 540)">
+    <rect width="100" height="30" fill="#1e3a5f" rx="4" ry="4"/>
+    <text x="50" y="20" fill="#60a5fa" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">🔄 断幺九</text>
+  </g>
+  <g transform="translate(960, 540)">
+    <rect width="100" height="30" fill="#1e3a5f" rx="4" ry="4"/>
+    <text x="50" y="20" fill="#60a5fa" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">🔄 平和</text>
+  </g>
+  <g transform="translate(1070, 540)">
+    <rect width="100" height="30" fill="#3f3f46" rx="4" ry="4"/>
+    <text x="50" y="20" fill="#a1a1aa" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">⏳ 国士无双</text>
+  </g>
+  
+  <!-- Footer -->
+  <rect x="0" y="700" width="1200" height="100" fill="#0f172a"/>
+  <text x="40" y="735" fill="#f59e0b" font-family="Arial, sans-serif" font-size="14">📦 模型大小: 143 MB</text>
+  <text x="280" y="735" fill="#3b82f6" font-family="Arial, sans-serif" font-size="14">⚡ 训练时间: 约 40 小时</text>
+  <text x="520" y="735" fill="#10b981" font-family="Arial, sans-serif" font-size="14">📊 总步数: 200,000+</text>
+  <text x="760" y="735" fill="#ef4444" font-family="Arial, sans-serif" font-size="14">🔧 PyTorch 2.0+</text>
+  <text x="1000" y="735" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="14">🐍 Python 3.8+</text>
+  
+  <text x="40" y="765" fill="#64748b" font-family="monospace" font-size="12">💡 提示: 下载预训练模型或自行训练，详见 README</text>
+</svg>

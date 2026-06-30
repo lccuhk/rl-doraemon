@@ -16,6 +16,12 @@
 
 一个基于深度强化学习（DQN）的麻将AI项目，使用 PyTorch 实现。
 
+## 🖼️ 项目预览
+
+<p align="center">
+  <img src="docs/images/preview.svg" alt="RL-Doraemon Preview" width="100%" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);" />
+</p>
+
 ## 项目简介
 
 本项目实现了一个能够自主学习打麻将的 AI 智能体，通过深度强化学习算法（DQN）进行训练。
