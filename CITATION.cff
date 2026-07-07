@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "如果您使用了本项目的代码或数据，请引用以下内容。"
+title: "RL-Doraemon: 麻将AI强化学习项目"
+abstract: "一个基于深度强化学习（DQN）的麻将AI项目，使用 PyTorch 实现。包含完整的麻将游戏环境、DQN 强化学习算法、训练统计和日志系统。"
+authors:
+  - family-names: "LU"
+    given-names: "Denis"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: "Independent Researcher"
+    email: "your.email@example.com"
+version: "1.0.0"
+date-released: "2026-01-01"
+license: MIT
+repository-code: "https://github.com/lccuhk/rl-doraemon"
+url: "https://github.com/lccuhk/rl-doraemon"
+keywords:
+  - "reinforcement-learning"
+  - "deep-learning"
+  - "dqn"
+  - "mahjong"
+  - "pytorch"
+  - "game-ai"
+  - "python"
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "LU"
+      given-names: "Denis"
+  title: "RL-Doraemon: A Deep Reinforcement Learning Framework for Mahjong AI"
+  year: "2026"
+  publisher: "GitHub"
+  url: "https://github.com/lccuhk/rl-doraemon"
