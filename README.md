@@ -14,6 +14,12 @@
   <img src="https://img.shields.io/badge/RL-DQN-FF6B6B?style=for-the-badge" />
 </p>
 
+<p align="center">
+  <a href="https://github.com/lccuhk/rl-doraemon">
+    <img src="https://img.shields.io/badge/📂_查看源码-GitHub-00D9FF?style=for-the-badge" />
+  </a>
+</p>
+
 一个基于深度强化学习（DQN）的麻将AI项目，使用 PyTorch 实现。
 
 ## 🖼️ 项目预览
