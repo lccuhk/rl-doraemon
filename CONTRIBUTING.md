@@ -85,6 +85,212 @@ flake8 .
 pytest tests/ -v
 ```
 
+## 代码风格指南
+
+### Git 提交规范
+
+我们遵循 [Conventional Commits](https://www.conventionalcommits.org/) 规范：
+
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+**提交类型（type）：**
+- `feat` - 新功能、新算法
+- `fix` - Bug 修复
+- `docs` - 文档更新
+- `style` - 代码格式（不影响代码运行）
+- `refactor` - 重构（既不是新增功能，也不是修改 bug）
+- `perf` - 性能优化
+- `test` - 增加测试
+- `chore` - 构建过程或辅助工具的变动
+- `ci` - CI/CD 配置变更
+- `revert` - 回退提交
+
+**示例：**
+```
+feat(dqn): add prioritized experience replay
+
+- Implement PER with proportional prioritization
+- Add beta annealing schedule
+- Update training configuration
+- Add unit tests for PER buffer
+
+Closes #123
+```
+
+**提交规范：**
+- 标题不超过 72 个字符
+- 使用中文或英文均可，但要保持一致
+- 标题使用祈使句（"添加" 而不是 "添加了"）
+- 正文详细说明改动的原因和内容
+- 关联相关 Issue（如 `Closes #123`、`Fixes #456`）
+
+### 命名约定
+
+```python
+# 变量名 - snake_case，描述性命名
+state_tensor = torch.zeros(batch_size, state_dim)
+episode_rewards = []
+max_gradient_norm = 10.0
+
+# 函数名 - snake_case，动词开头
+def compute_td_loss(states, actions, rewards, next_states, dones):
+    """计算 TD 误差损失"""
+    pass
+
+def update_target_network(target_net, policy_net, tau):
+    """软更新目标网络参数"""
+    pass
+
+# 类名 - PascalCase
+class DQNAgent:
+    """DQN 智能体"""
+    pass
+
+class PrioritizedReplayBuffer:
+    """优先经验回放缓冲区"""
+    pass
+
+class Trainer:
+    """训练器"""
+    pass
+
+# 常量 - UPPER_SNAKE_CASE
+LEARNING_RATE = 1e-4
+GAMMA = 0.99
+BATCH_SIZE = 64
+REPLAY_BUFFER_SIZE = 100000
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
+# 私有变量/方法 - 下划线前缀
+class DQNAgent:
+    def __init__(self):
+        self._policy_net = None
+        self._target_net = None
+    
+    def _compute_loss(self, batch):
+        """内部损失计算方法"""
+        pass
+```
+
+#### 文件命名
+```
+# Python 文件 - snake_case
+dqn_agent.py
+replay_buffer.py
+trainer.py
+__init__.py
+
+# 配置文件 - snake_case
+config.yaml
+hyperparams.py
+
+# 测试文件 - test_ 前缀
+test_dqn_agent.py
+test_replay_buffer.py
+```
+
+### 注释规范
+
+#### Docstring（Google 风格）
+```python
+def train_episode(env, agent, epsilon, max_steps=1000):
+    """训练一个回合
+
+    Args:
+        env: 游戏环境实例
+        agent: 强化学习智能体
+        epsilon: 探索率
+        max_steps: 最大步数限制
+
+    Returns:
+        包含回合信息的字典：
+        - reward: 总奖励
+        - steps: 步数
+        - loss: 平均损失
+
+    Raises:
+        ValueError: 环境或智能体未初始化
+
+    Example:
+        >>> stats = train_episode(env, agent, epsilon=0.1)
+        >>> print(f"Reward: {stats['reward']}, Steps: {stats['steps']}")
+    """
+    pass
+```
+
+#### 行内注释
+```python
+# ✅ 好的注释 - 解释为什么这样做
+# 使用 n-step 返回减少方差，提升样本效率
+returns = compute_n_step_returns(rewards, values, n=3)
+
+# ✅ 好的注释 - 解释复杂的数学公式
+# 计算 GAE (Generalized Advantage Estimation)
+# 参考: https://arxiv.org/abs/1506.02438
+advantages = compute_gae(rewards, values, gamma=0.99, lam=0.95)
+
+# ❌ 不好的注释 - 重复代码内容
+# 计算损失
+loss = criterion(q_values, target_q)
+```
+
+### 导入排序规范
+
+```python
+# 1. 标准库
+import os
+import sys
+import argparse
+from collections import deque
+from typing import List, Tuple, Optional
+
+# 2. 第三方库
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader
+
+# 3. 本地库
+from rl_doraemon.agents.dqn import DQNAgent
+from rl_doraemon.buffers.replay_buffer import ReplayBuffer
+from rl_doraemon.utils.logger import Logger
+from rl_doraemon.config import Config
+```
+
+### 错误处理规范
+
+```python
+# ✅ 使用自定义异常
+class TrainingError(Exception):
+    """训练过程异常"""
+    def __init__(self, message: str, episode: int = 0):
+        self.episode = episode
+        super().__init__(f"Episode {episode}: {message}")
+
+# ✅ 捕获具体异常
+try:
+    state = env.reset()
+except gym.error.ResetNeeded as e:
+    logger.warning(f"环境需要重置: {e}")
+    state = env.reset(force=True)
+except Exception as e:
+    logger.error(f"未知环境错误: {e}")
+    raise TrainingError(f"环境初始化失败: {e}")
+
+# ❌ 不要静默异常
+try:
+    agent.update(batch)
+except:  # 太宽泛且静默
+    pass
+```
+
 ## 开发环境
 
 1. **克隆仓库**
